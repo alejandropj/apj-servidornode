@@ -1,0 +1,79 @@
+<%- include ("partials/_header") %>
+<pre></pre>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-header">
+                  <h5 class="text-center">Estudiantes</h5>
+                </div>
+                <div class="card-body">
+                  <ul class="list-group">
+                    <div class="row row-cols-1 row-cols-lg-3">
+                      <% if (data){ %>
+                      <% for (var i = 0; i< data.length; i++){ %>
+                        <div class="col">
+                            <li class="list-group-item mb-3">
+                              <img class="img-responsive" src="<%= data[i].foto %>" alt="Icono" width="32px" height="32px">
+                              <br>
+                              <p>NIA: <%= data[i].nia %></p>
+                              <p>Nombre: <%= data[i].nombre %></p>
+                              <p>Apellidos: <%= data[i].apellidos %></p>
+                              <p><%= data[i].email %></p>
+                              <p>Edad: <%= data[i].edad %></p>
+                              <p>Grado: <%= data[i].descripcion %></p>
+                              <p>Sala: <%= data[i].id_aula %></p>
+              
+                              <a href="/modificar/<%= data[i].nia %>" class="btn btn-dark btn-sm mt-3">Editar</a>
+                              <a href="/borrar/<%= data[i].nia %>" class="btn btn-danger btn-sm mt-3">Eliminar</a>
+                            </li>
+                          </div>
+                      <% } %>
+                      <% } %>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-5">
+            <h1>Añadir Estudiante</h1>
+            <form action="/annyadir" method="post">
+                <div class="form-group">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" placeholder="Apellidos" name="apellidos">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" placeholder="correo@example.com" name="email">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Edad</label>
+                        <input type="number" class="form-control" placeholder="Edad" min="1" name="edad">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        <input type="text" class="form-control" placeholder="Descripcion" name="descripcion">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Foto</label>
+                        <input type="text" class="form-control" placeholder="fotoX.jpg (X=1,2,3 o 4)" pattern="(^(foto[1-4]\.jpg)$)" name="foto">
+                      </div>
+              
+                      <div class="mb-3">
+                        <label class="form-label">ID_AULA</label>
+                        <input type="number" class="form-control" placeholder="Tabla clase solo tiene 3 id_aula" min=1 max=3 name="id_aula">
+                      </div>
+                      <button type="submit" class="btn btn-dark col-12">Alta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<%- include ("./partials/_footer") %>

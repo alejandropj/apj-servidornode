@@ -1,0 +1,37 @@
+<%- include ("partials/_header") %>
+
+<div class="container">
+    <h1 class="text-center mt-5 mb-5">Modificar Estudiante</h1>
+</div>
+
+<div class="container">
+    <ul class="list-group">
+        <div class="row">
+            <div class="col">
+                <li class="list-group-item mb-3">
+                    <form action="/modificar/<%= data.nia %>" method="POST">
+                        <small>Nombre</small>
+                        <input type="text" class="form-control" value="<%= data.nombre %>" name="nombre">
+                        <small>Apellidos</small>
+                        <input type="text" class="form-control" value="<%= data.apellidos %>" name="apellidos">
+                        <small>Email</small>
+                        <input type="text" class="form-control" value="<%= data.email %>" name="email" required>
+                        <small>Edad</small>
+                        <input type="number" class="form-control" value="<%= data.edad %>" name="edad" min="1">
+                        <small>Foto</small>
+                        <input type="text" class="form-control" value="<%= data.foto %>" pattern="(^(foto[1-4]\.jpg)$)" name="foto">
+                        <small>Descripcion</small>
+                        <input type="text" class="form-control" value="<%= data.descripcion %>"
+                            name="descripcion">
+                        <small>Id_aula</small>
+                        <input type="number" class="form-control" value="<%= data.id_aula %>" name="id_aula"
+                            min="1" max="3">
+                        <button class="btn btn-dark btn-sm mt-3" type="submit">Editar</button>
+                    </form>
+                </li>
+            </div>
+        </div>
+    </ul>
+</div>
+
+<%- include ("./partials/_footer") %>
